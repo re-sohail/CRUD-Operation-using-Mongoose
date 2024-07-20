@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Users</title>
+    <link rel="stylesheet" href="/stylesheet/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <div class="w-full min-h-full h-auto bg-zinc-900 text-white realtive">
+        <a href="/" class="text-blue-400 absolute top-10 left-10">Back</a>
+        <div class="w-full h-full pt-24 px-10">
+            <h1 class="text-3xl font-semibold mb-8">All Users</h1>
+            <div class="w-full grid grid-cols-6 gap-y-5">
+                <% if(allUsers.length> 0){ %>
+                    <% allUsers.forEach(element=> { %>
+                        <div class="w-52 p-2 bg-zinc-700 rounded-sm overflow-hidden">
+                            <div class="w-full h-36 bg-blue-500 rounded-sm">
+                                <img class="w-full h-full object-cover" src="<%= element.image %>" alt="">
+                            </div>
+                            <h1 class="pt-2 text-lg font-medium">
+                                <%= element.name ? element.name : "Name is Missing" %>
+                            </h1>
+                            <h1 class="text-zinc-300 text-[14px]">
+                                <%= element.email ? element.email : "Email is Missing" %>
+                            </h1>
+                            <div class="w-full mt-3 flex items-center gap-2">
+                                <a href="/edit/<%= element._id %>"
+                                    class="w-[49%] py-2 bg-blue-500 rounded-sm flex items-center justify-center">Edit</a>
+                                <a href="/delete/<%= element._id %>"
+                                    class="w-[49%] py-2 bg-red-500 rounded-sm flex items-center justify-center">Delete</a>
+
+                                <% console.log(element); %>
+                            </div>
+                        </div>
+                        <% }); %>
+                            <% }else{ %>
+                                <h1>There is no data</h1>
+                                <% } %>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
